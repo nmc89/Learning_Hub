@@ -9,6 +9,20 @@
       background-color: #f9f9f9;
     }
     h1 { color: #333; }
+    <input 
+  type="text" 
+  id="searchInput" 
+  placeholder="🔍 Search topics (e.g., OSI, CIA, TCP)" 
+  onkeyup="searchNotes()" 
+  style="
+    width:100%;
+    padding:10px;
+    margin:15px 0;
+    font-size:16px;
+    border-radius:6px;
+    border:1px solid #ccc;
+  ">
+
     details { 
       background: #fff; 
       padding: 10px; 
@@ -61,6 +75,18 @@
     <li>PowerShell</li>
   </ul>
 </details>
+<script>
+function searchNotes() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let details = document.getElementsByTagName("details");
+
+  for (let i = 0; i < details.length; i++) {
+    let text = details[i].innerText.toLowerCase();
+    details[i].style.display = text.includes(input) ? "" : "none";
+  }
+}
+</script>
 
 </body>
 </html>
+
